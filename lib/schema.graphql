@@ -1,0 +1,18 @@
+type Course {
+    _id: ID,
+    title: String,
+    teacher: String,
+    description: String,
+    topic: String
+}
+
+type Query {
+    "Get an array of courses"
+    getCourses: [Course]
+    "Retorna un saludo al mundo"
+    hello: String
+    "Retorna un saludo a ti directamente"
+    saludo: String
+    "Te dice la edad"
+    age: Int
+}

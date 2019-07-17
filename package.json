@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "standard",
+    "lint_fix": "standard --fix",
     "dev": "nodemon -e js,graphql index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,9 +15,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.5"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "standard": "^13.0.2"
   }
 }
