@@ -1,17 +1,24 @@
 'use strict'
 
 const { graphql, buildSchema } = require('graphql');
+const express = require('express');
+const express_gql = require('express-graphql');
+
+const app = express();
 
 // Definir schema:
-const schema= buildSchema(`
+const schema = buildSchema(`
     type Query {
+        "Retorna un saludo al mundo"
         hello: String
+        "Retorna un saludo a ti directamente"
         saludo: String
+        "Te dice la edad"
         age: Int
     }
 `);
 
-// Definir Resolver:
+// Definir Resolvers:
 const resolvers = {
     hello: () => {
         return 'Hola Mundo';
@@ -24,7 +31,12 @@ const resolvers = {
     }
 }
 
-// execute query
-graphql(schema, '{ hello saludo age }', resolvers).then(data => {
-    console.log(data);
+app.use('/api', express_gql({
+    schema,
+    rootValue: resolvers,
+    graphiql: true,
+}));
+
+app.listen(3000, () => {
+    console.log('Server Up at the port 3000');
 });
