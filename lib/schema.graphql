@@ -56,6 +56,11 @@ input studentInput {
     email: String
 }
 
+input studentEditInput {
+    name: String
+    email: String
+}
+
 type Mutation {
     "Create a course"
     createCourse(input: courseInput!): Course
@@ -65,4 +70,7 @@ type Mutation {
 
     "Create a student"
     createStudent(input: studentInput!): Student
+
+    "Edit a student"
+    editStudent(id: ID!, input: studentEditInput!): Student
 }
