@@ -6,6 +6,12 @@ type Course {
     topic: String
 }
 
+type Student {
+    _id: ID!
+    name: String!
+    email: String!
+}
+
 type Query {
     "Get an array of courses"
     getCourses: [Course]
@@ -13,12 +19,38 @@ type Query {
     "Devuelve un solo curso"
     getCourse(id: ID!): Course
 
+    "Get an array of students"
+    getStudents: [Student]
+
+    "Get a single student by ID"
+    getStudent(id: ID!): Student
+
     "Retorna un saludo al mundo"
-    hello: String
+    hello(variable1: String): String
 
     "Retorna un saludo a ti directamente"
     saludo: String
 
     "Te dice la edad"
     age: Int
+}
+
+input courseInput {
+    title: String!,
+    teacher: String,
+    description: String!,
+    topic: String
+}
+
+input studentInput {
+    name: String
+    email: String
+}
+
+type Mutation {
+    "Create a course"
+    createCourse(input: courseInput!): Course
+
+    "Create a student"
+    createStudent(input: studentInput!): Student
 }
