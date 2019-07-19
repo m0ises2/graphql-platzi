@@ -68,9 +68,15 @@ type Mutation {
     "Edit a Course"
     editCourse(id: ID!, input: courseEditInput!): Course
 
-    "Create a student"
+    "Delete a Course"
+    deleteCourse(id: ID!): Course
+
+    "Create a Student"
     createStudent(input: studentInput!): Student
 
-    "Edit a student"
+    "Edit a Student"
     editStudent(id: ID!, input: studentEditInput!): Student
+    
+    "Delete a Course"
+    deleteStudent(id: ID!): Student
 }
