@@ -8,6 +8,7 @@ const expressGraphql = require('express-graphql')
 const { readFileSync } = require('fs')
 const { join } = require('path')
 const resolvers = require('./lib/resolvers')
+const cors = require('cors')
 
 const app = express()
 
@@ -16,6 +17,8 @@ const schema = makeExecutableSchema({
   typeDefs: readFileSync(join(__dirname, 'lib', 'schema.graphql'), 'utf-8'),
   resolvers
 })
+
+app.use(cors())
 
 app.use('/api', expressGraphql({
   schema,

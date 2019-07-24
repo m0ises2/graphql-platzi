@@ -10,8 +10,8 @@ type Course {
     title: String!,
     teacher: String,
     description: String!,
-    topic: String,
-    people: [Student]
+    topic: String @deprecated,
+    people: [Person]
     level: level
 }
 
@@ -35,6 +35,8 @@ type Monitor implements Person{
     phone: String
 }
 
+union GlobalSearch = Course | Student | Monitor
+
 type Query {
     "Get an array of courses"
     getCourses: [Course]
@@ -56,6 +58,9 @@ type Query {
 
     "Te dice la edad"
     age: Int
+
+    "Ejecuta una busqueda Global"
+    searchItems(keyword: String!): [GlobalSearch]
 }
 
 input courseInput {
