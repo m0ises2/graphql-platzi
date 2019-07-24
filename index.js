@@ -9,6 +9,7 @@ const { readFileSync } = require('fs')
 const { join } = require('path')
 const resolvers = require('./lib/resolvers')
 const cors = require('cors')
+const isDev = process.env.NODE_ENV !== 'production' ? true : false;
 
 const app = express()
 
@@ -23,7 +24,7 @@ app.use(cors())
 app.use('/api', expressGraphql({
   schema,
   rootValue: resolvers,
-  graphiql: true
+  graphiql: isDev
 }))
 
 app.listen(3000, () => {
